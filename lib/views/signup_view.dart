@@ -75,8 +75,13 @@ class _SignupViewState extends ConsumerState<SignupView> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  ref.read(supabaseAuthProvider.notifier).signUp(email: _emailController.text, password: _passwordController.text);
+                onPressed: () async {
+                  final jsend = await ref.read(supabaseAuthProvider.notifier).signUp(email: _emailController.text, password: _passwordController.text);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(jsend.message ?? 'Logged in! No message available'),
+                    ),
+                  );
                 },
                 child: const Text('Signup'),
               ),

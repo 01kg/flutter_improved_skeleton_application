@@ -17,12 +17,28 @@ class SupabaseAuth extends _$SupabaseAuth {
     return supabase.auth.currentUser;
   }
 
-  Future<void> signUp({required String email, required String password}) async {
-    await supabase.auth.signUp(
-      email: email,
-      password: password,
-    );
-    ref.invalidateSelf();
+  Future<Jsend> signUp({required String email, required String password}) async {
+    try {
+      final res = await supabase.auth
+          .signUp(
+        email: email,
+        password: password,
+      )
+          .timeout(const Duration(seconds: 20), onTimeout: () {
+        throw TimeoutException(
+            "The connection has timed out, Please try again!");
+      });
+  
+      // If sign-up is successful, invalidate the provider and return success
+      ref.invalidateSelf();
+  
+      final userEmail = res.user?.email;
+      return Jsend<User?>.success(data: res.user, message: "Sign up successful, welcome $userEmail!");
+    } on TimeoutException catch (e) {
+      return Jsend.error("Sign up request timeout! Error: $e");
+    } catch (e) {
+      return Jsend.error("An error occurred: ${e.toString()}");
+    }
   }
 
   Future<Jsend> signIn(

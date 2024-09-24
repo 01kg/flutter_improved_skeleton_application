@@ -35,11 +35,4 @@ class Jsend<T> {
     );
   }
 
-  // factory Jsend.fromJson(Map<String, dynamic> json, T Function(Object? json) fromJsonT) {
-  //   return Jsend(
-  //     status: json['status'],
-  //     message: json['message'],
-  //     data: fromJsonT(json['data']),
-  //   );
-  // }
 }
