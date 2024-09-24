@@ -1,29 +1,13 @@
-# flutter_skeleton_application_improved
+<div align="center">
+  <p align="center">  
+    <h2>Flutter Skeleton Application Improved</h2>
+    <h3>A Better Start Point of Your Next Flutter App ⚡</h3>
+  </p>
+</div>
 
-A new Flutter project.
+## Integration:
 
-## Getting Started
-
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/to/state-management-sample).
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-## Assets
-
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
-
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/to/resolution-aware-images).
-
-## Localization
-
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
-
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter apps](https://flutter.dev/to/internationalization).
+1. Freezed
+2. Riverpod
+3. Supabase
+4. DotEnv
