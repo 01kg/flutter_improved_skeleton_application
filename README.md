@@ -17,7 +17,7 @@ template. Added support for Freezed, Riverpod, Supabase, DotEnv.
 
 ## Usage:
 
-### Download a latest release of FISA
+### Download [a latest release of FISA](https://github.com/01kg/flutter_improved_skeleton_application/releases/latest)
 
 It has 4 essential views:
 
