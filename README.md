@@ -47,6 +47,7 @@ cat .env
 ```
 
 Replace the credentials with your own Supabase's.
+**Note:** If you are connecting to local Supabase, `SUPABASE_URL` is expected to be the "API URL". E.g. `http://127.0.0.1:54321`
 
 ### Spin it up
 
