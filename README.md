@@ -38,6 +38,7 @@ cd flutter_skeleton_application_improved
 # install packages
 dart pub get
 ```
+In some cases, after run `dart pub get`, in `app.dart`, VS Code still warns on `import 'package:flutter_gen/gen_l10n/app_localizations.dart';`, saying `Not found`. Just run `dart pub get` again might help.
 
 ### Connect to your Supabase
 
