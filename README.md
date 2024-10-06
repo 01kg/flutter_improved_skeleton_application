@@ -53,6 +53,10 @@ Replace the credentials with your own Supabase's.
 ### Spin it up
 
 ```bash
+# Generate Freezed and Riverpod files
+dart run build_runner build
+
+# launch your app in debug mode
 flutter run
 ```
 
