@@ -26,6 +26,10 @@ It has 4 essential views:
 - Login
 - Signup
 
+### Change the name of the project to yours
+
+1. Global search and replace `flutter_skeleton_application_improved` with `your_project_name` (Should in snake_case to meet Dart's standard)
+
 ### Go into the folder an install packages
 
 ```bash
