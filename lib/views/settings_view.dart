@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_skeleton_application_improved/providers/app_preferences.dart';
-
+import 'package:flutter_skeleton_application_improved/providers/supabase_auth.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
@@ -12,10 +12,8 @@ class SettingsView extends ConsumerWidget {
 
   static const routeName = '/settings';
 
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final appPreferences = ref.watch(appPreferencesProvider);
 
     return Scaffold(
@@ -28,28 +26,49 @@ class SettingsView extends ConsumerWidget {
         //
         // When a user selects a theme from the dropdown list, the
         // SettingsController is updated, which rebuilds the MaterialApp.
-        child: DropdownButton<ThemeMode>(
-          // Read the selected themeMode from the controller
-          value: appPreferences.themeMode,
-          // Call the updateThemeMode method any time the user selects a theme.
-          onChanged: (ThemeMode? newThemeMode) {
-            if (newThemeMode != null) {
-              ref.read(appPreferencesProvider.notifier).toggleThemeMode(newThemeMode);
-            }
-          },
-          items: const [
-            DropdownMenuItem(
-              value: ThemeMode.system,
-              child: Text('System Theme'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            DropdownButton<ThemeMode>(
+              // Read the selected themeMode from the controller
+              value: appPreferences.themeMode,
+              // Call the updateThemeMode method any time the user selects a theme.
+              onChanged: (ThemeMode? newThemeMode) {
+                if (newThemeMode != null) {
+                  ref
+                      .read(appPreferencesProvider.notifier)
+                      .toggleThemeMode(newThemeMode);
+                }
+              },
+              items: const [
+                DropdownMenuItem(
+                  value: ThemeMode.system,
+                  child: Text('System Theme'),
+                ),
+                DropdownMenuItem(
+                  value: ThemeMode.light,
+                  child: Text('Light Theme'),
+                ),
+                DropdownMenuItem(
+                  value: ThemeMode.dark,
+                  child: Text('Dark Theme'),
+                )
+              ],
             ),
-            DropdownMenuItem(
-              value: ThemeMode.light,
-              child: Text('Light Theme'),
+            SizedBox(height: 100),
+            ElevatedButton(
+              onPressed: () async {
+                final jsend =
+                    await ref.read(supabaseAuthProvider.notifier).signOut();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                        jsend.message ?? 'Signed out! No message available'),
+                  ),
+                );
+              },
+              child: const Text('Sign Out'),
             ),
-            DropdownMenuItem(
-              value: ThemeMode.dark,
-              child: Text('Dark Theme'),
-            )
           ],
         ),
       ),

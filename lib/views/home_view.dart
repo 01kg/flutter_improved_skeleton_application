@@ -4,7 +4,6 @@ import 'package:flutter_skeleton_application_improved/providers/supabase_auth.da
 import 'package:flutter_skeleton_application_improved/views/settings_view.dart';
 
 class HomeView extends ConsumerWidget {
-
   static const routeName = '/';
 
   const HomeView({
@@ -28,19 +27,7 @@ class HomeView extends ConsumerWidget {
           ),
         ],
       ),
-      body: Center(
-        child: ElevatedButton(
-                onPressed: () async {
-                  final jsend = await ref.read(supabaseAuthProvider.notifier).signOut();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(jsend.message ?? 'Signed out! No message available'),
-                    ),
-                  );
-                },
-          child: const Text('Sign Out'),
-        ),
-      ),
+      body: Center(),
     );
   }
 }

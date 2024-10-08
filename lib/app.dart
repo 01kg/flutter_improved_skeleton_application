@@ -29,6 +29,7 @@ class MyApp extends ConsumerWidget {
     // The ListenableBuilder Widget listens to the SettingsController for changes.
     // Whenever the user updates their settings, the MaterialApp is rebuilt.
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // Providing a restorationScopeId allows the Navigator built by the
       // MaterialApp to restore the navigation stack when a user leaves and
       // returns to the app after it has been killed while running in the
@@ -69,11 +70,10 @@ class MyApp extends ConsumerWidget {
         return MaterialPageRoute<void>(
           settings: routeSettings,
           builder: (BuildContext context) {
-
             final user = ref.watch(supabaseAuthProvider);
 
             if (user == null) {
-            // if (authEvent.value?.event != AuthChangeEvent.signedIn) {
+              // if (authEvent.value?.event != AuthChangeEvent.signedIn) {
               if (routeSettings.name == SignupView.routeName) {
                 return const SignupView();
               }
