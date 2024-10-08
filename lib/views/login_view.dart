@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_skeleton_application_improved/providers/supabase_auth.dart';
 import 'package:flutter_skeleton_application_improved/views/signup_view.dart';
 
-
 class LoginView extends ConsumerStatefulWidget {
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _LoginViewState();
-    static const routeName = '/login';
+  static const routeName = '/login';
 
   const LoginView({super.key});
 }
@@ -53,10 +53,22 @@ class _LoginViewState extends ConsumerState<LoginView> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  final jsend = await ref.read(supabaseAuthProvider.notifier).signIn(email: _emailController.text, password: _passwordController.text);
+                  final devAccount = dotenv.get('DEV_ACCOUNT', fallback: "");
+                  final devPassword = dotenv.get('DEV_PASSWORD', fallback: "");
+                  String email = (_emailController.text != "")
+                      ? _emailController.text
+                      : devAccount;
+                  String password = (_passwordController.text != "")
+                      ? _passwordController.text
+                      : devPassword;
+
+                  final jsend = await ref
+                      .read(supabaseAuthProvider.notifier)
+                      .signIn(email: email, password: password);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(jsend.message ?? 'Logged in! No message available'),
+                      content: Text(
+                          jsend.message ?? 'Logged in! No message available'),
                     ),
                   );
                 },
@@ -68,8 +80,9 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 children: [
                   const Text("No registered? "),
                   GestureDetector(
-                    onTap: (){
-                      Navigator.restorablePushNamed(context, SignupView.routeName);
+                    onTap: () {
+                      Navigator.restorablePushNamed(
+                          context, SignupView.routeName);
                     },
                     child: const Text(
                       "Sign up now!",
