@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_skeleton_application_improved/providers/app_preferences.dart';
-import 'package:flutter_skeleton_application_improved/providers/supabase_auth.dart';
+import 'package:flutter_skeleton_application_improved/providers/app_preferences_provider.dart';
+import 'package:flutter_skeleton_application_improved/providers/supabase_auth_provider.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///

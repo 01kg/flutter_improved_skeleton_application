@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'supabase_auth.dart';
+part of 'supabase_auth_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

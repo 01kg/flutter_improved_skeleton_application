@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_skeleton_application_improved/providers/supabase_auth.dart';
+import 'package:flutter_skeleton_application_improved/providers/supabase_auth_provider.dart';
 import 'package:flutter_skeleton_application_improved/views/login_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -61,7 +61,8 @@ class _SignupViewState extends ConsumerState<SignupView> {
               ),
               TextFormField(
                 controller: _confirmPasswordController,
-                decoration: const InputDecoration(labelText: 'Confirm Password'),
+                decoration:
+                    const InputDecoration(labelText: 'Confirm Password'),
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -76,10 +77,15 @@ class _SignupViewState extends ConsumerState<SignupView> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  final jsend = await ref.read(supabaseAuthProvider.notifier).signUp(email: _emailController.text, password: _passwordController.text);
+                  final jsend = await ref
+                      .read(supabaseAuthProvider.notifier)
+                      .signUp(
+                          email: _emailController.text,
+                          password: _passwordController.text);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(jsend.message ?? 'Logged in! No message available'),
+                      content: Text(
+                          jsend.message ?? 'Logged in! No message available'),
                     ),
                   );
                 },
@@ -92,7 +98,8 @@ class _SignupViewState extends ConsumerState<SignupView> {
                   const Text("Already a member? "),
                   GestureDetector(
                     onTap: () {
-                      Navigator.restorablePushNamed(context, LoginView.routeName);
+                      Navigator.restorablePushNamed(
+                          context, LoginView.routeName);
                     },
                     child: const Text(
                       "Log in now!",

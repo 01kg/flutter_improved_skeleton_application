@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_skeleton_application_improved/providers/supabase_auth.dart';
+import 'package:flutter_skeleton_application_improved/providers/supabase_auth_provider.dart';
 import 'package:flutter_skeleton_application_improved/views/signup_view.dart';
 
 class LoginView extends ConsumerStatefulWidget {
