@@ -28,7 +28,8 @@ It has 4 essential views:
 
 ### Change the name of the project to yours
 
-1. Global search and replace `flutter_skeleton_application_improved` with `your_project_name` (Should in snake_case to meet Dart's standard)
+1. Global search and replace `flutter_skeleton_application_improved` with
+   `your_project_name` (Should in snake_case to meet Dart's standard)
 
 ### Go into the folder an install packages
 
@@ -38,7 +39,10 @@ cd flutter_skeleton_application_improved
 # install packages
 dart pub get
 ```
-In some cases, after run `dart pub get`, in `app.dart`, VS Code still warns on `import 'package:flutter_gen/gen_l10n/app_localizations.dart';`, saying `Not found`. Just run `dart pub get` again might help.
+
+In some cases, after run `dart pub get`, in `app.dart`, VS Code still warns on
+`import 'package:flutter_gen/gen_l10n/app_localizations.dart';`, saying
+`Not found`. Just run `dart pub get` again might help.
 
 ### Connect to your Supabase
 
@@ -53,7 +57,8 @@ cat .env
 
 Replace the credentials with your own Supabase's.
 
-**Note:** If you are connecting to local Supabase, `SUPABASE_URL` is expected to be the "API URL". E.g. `http://127.0.0.1:54321`
+**Note:** If you are connecting to local Supabase, `SUPABASE_URL` is expected to
+be the "API URL". E.g. `http://127.0.0.1:54321`
 
 ### Spin it up
 
@@ -71,3 +76,20 @@ flutter run
 - Log in
 - Go to Settings, change to light/dark theme
 - Log out
+
+## Misc Features
+
+### DEV_ACCOUNT and DEV_PASSWORD
+
+Say in your Supabase, there is already an account created for testing purpose.
+
+While testing UI, you feel hand input the account and password time and time
+again is tedious, then you could add them in `.env` file:
+
+```bash
+DEV_ACCOUNT=YOUR@DEV.ACCOUNT
+DEV_PASSWORD=YOUR_DEV_PASSWORD
+```
+
+After this, if you leave 'Email' and 'Password' text fields empty, clicing
+'Login' will login with the dev account.
