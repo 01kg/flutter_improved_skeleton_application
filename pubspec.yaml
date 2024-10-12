@@ -13,10 +13,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.1.0
+  flutter_hooks: ^0.20.5
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.5.1
   freezed_annotation: ^2.4.4
+  hooks_riverpod: ^2.5.2
   json_annotation: ^4.9.0
   riverpod_annotation: ^2.3.5
   supabase_flutter: ^2.6.0
