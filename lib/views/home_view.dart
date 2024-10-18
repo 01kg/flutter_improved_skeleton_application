@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_skeleton_application_improved/providers/supabase_auth_provider.dart';
 import 'package:flutter_skeleton_application_improved/views/settings_view.dart';
 
 class HomeView extends ConsumerWidget {

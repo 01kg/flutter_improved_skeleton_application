@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/widgets.dart';
 import 'package:flutter_skeleton_application_improved/models/jsend.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -9,7 +8,6 @@ part 'supabase_auth.g.dart';
 
 final supabase = Supabase.instance.client;
 
-
 @riverpod
 class SupabaseAuth extends _$SupabaseAuth {
   @override
@@ -17,7 +15,8 @@ class SupabaseAuth extends _$SupabaseAuth {
     return supabase.auth.currentUser;
   }
 
-  Future<Jsend> signUp({required String email, required String password}) async {
+  Future<Jsend> signUp(
+      {required String email, required String password}) async {
     try {
       final res = await supabase.auth
           .signUp(
@@ -28,12 +27,13 @@ class SupabaseAuth extends _$SupabaseAuth {
         throw TimeoutException(
             "The connection has timed out, Please try again!");
       });
-  
+
       // If sign-up is successful, invalidate the provider and return success
       ref.invalidateSelf();
-  
+
       final userEmail = res.user?.email;
-      return Jsend<User?>.success(data: res.user, message: "Sign up successful, welcome $userEmail!");
+      return Jsend<User?>.success(
+          data: res.user, message: "Sign up successful, welcome $userEmail!");
     } on TimeoutException catch (e) {
       return Jsend.error("Sign up request timeout! Error: $e");
     } catch (e) {
@@ -58,7 +58,8 @@ class SupabaseAuth extends _$SupabaseAuth {
       ref.invalidateSelf();
 
       final userEmail = res.user?.email;
-      return Jsend<User?>.success(data: res.user, message: "Welcome back, $userEmail!");
+      return Jsend<User?>.success(
+          data: res.user, message: "Welcome back, $userEmail!");
     } on TimeoutException catch (e) {
       return Jsend.error("Sign in request timeout! Error: $e");
     } catch (e) {
